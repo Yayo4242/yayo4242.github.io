@@ -3,68 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YayoTech - Resmi Web Sitesi</title>
+    <meta name="description" content="YayoTech Kurumsal Yazılım ve Optimizasyon Çözümleri. Bilgisayar ve mobil cihazlar için profesyonel performans hizmetleri.">
+    <title>YayoTech | İleri Düzey Yazılım Çözümleri</title>
+    <!-- Font Awesome İkonları (Profesyonel Görünüm İçin) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            background-color: #121212; /* Derin Siyah */
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
+        /* --- KURUMSAL TASARIM DEĞİŞKENLERİ --- */
+        :root {
+            --primary: #00ffcc; /* YayoTech Yeşili: Güven ve Teknoloji */
+            --dark: #0a0a0a;    /* Premium Siyah */
+            --gray: #1f1f1f;    /* Kart Arkaplanı */
+            --text: #ffffff;
+            --text-muted: #b0b0b0;
+        }
+
+        /* --- GENEL AYARLAR --- */
+        * {
             margin: 0;
-            padding-top: 100px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
         }
-        h1 {
-            color: #00ffcc; /* YayoTech Yeşili */
-            font-size: 3rem;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        p { font-size: 1.2rem; color: #b3b3b3; }
-        .container {
-            border: 2px solid #00ffcc;
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+        /* --- NAVİGASYON (ÜST MENÜ) --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            background-color: #00ffcc;
-            color: #000;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 30px;
-            transition: transform 0.2s, box-shadow 0.2s;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: 1px;
         }
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 15px #00ffcc;
-        }
-        .footer {
-            margin-top: 50px;
+
+        .logo span { color: var(--primary); }
+
+        .nav-links a {
+            margin-left: 30px;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .cta-btn {
+            background: var(--primary);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 204, 0.3);
+        }
+
+        /* --- HERO BÖLÜMÜ (GİRİŞ) --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1a2a26 0%, #0a0a0a 70%);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #b0b0b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons { display: flex; gap: 20px; }
+
+        .outline-btn {
+            border: 2px solid var(--text-muted);
+            color: var(--text);
+            padding: 10px 25px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .outline-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* --- İSTATİSTİKLER --- */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 10%;
+            background: var(--gray);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .stat-item h3 { font-size: 2.5rem; color: var(--primary); }
+        .stat-item p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* --- HİZMETLER --- */
+        .services {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .section-title span { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: bold; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--gray);
+            padding: 40px;
+            border-radius: 10px;
+            border: 1px solid #333;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card h3 { margin-bottom: 15px; font-size: 1.3rem; }
+        .card p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .price { font-weight: bold; color: #fff; font-size: 1.1rem; }
+
+        /* --- GÜVEN BÖLÜMÜ (KARA LEKEYİ SİLMEK İÇİN) --- */
+        .trust-section {
+            background: linear-gradient(45deg, #0f1c19, #0a0a0a);
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .trust-text { flex: 1; min-width: 300px; }
+        .trust-text h2 { margin-bottom: 20px; }
+        .trust-text p { margin-bottom: 15px; color: var(--text-muted); }
+        
+        .trust-features ul { list-style: none; margin-top: 20px; }
+        .trust-features li { margin-bottom: 10px; color: #fff; display: flex; align-items: center; }
+        .trust-features i { color: var(--primary); margin-right: 15px; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            padding: 50px 10%;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        
+        .socials { margin: 20px 0; }
+        .socials a { color: var(--text-muted); margin: 0 10px; font-size: 1.2rem; }
+        .socials a:hover { color: var(--primary); }
+        
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Mobilde menüyü gizle */
+            .stats { flex-direction: column; text-align: center; gap: 30px; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>🚀 YayoTech</h1>
-        <p>Windows Optimizasyon & Performans Çözümleri</p>
-        <p><i>CEO: Yayo42</i></p>
-        
-        <br>
-        <a href="#" class="btn">Projemiz Yakında Geliyor...</a>
+    <!-- NAVİGASYON -->
+    <nav>
+        <div class="logo">Yayo<span>Tech</span></div>
+        <div class="nav-links">
+            <a href="#services">Hizmetler</a>
+            <a href="#about">Hakkımızda</a>
+            <a href="#contact">İletişim</a>
+        </div>
+        <a href="#contact" class="cta-btn">Teklif Al</a>
+    </nav>
+
+    <!-- HERO (GİRİŞ) -->
+    <header>
+        <h1>Cihazınızın Gerçek Gücünü<br>Ortaya Çıkarın.</h1>
+        <p>YayoTech, donanım değişikliği gerektirmeyen ileri düzey yazılım optimizasyonlarıyla bilgisayar ve telefonlarınızı ilk günkü hızına kavuşturur. Risk yok, maksimum performans var.</p>
+        <div class="hero-buttons">
+            <a href="#services" class="cta-btn">Hizmetleri İncele</a>
+            <a href="#contact" class="outline-btn">Bize Ulaşın</a>
+        </div>
+    </header>
+
+    <!-- İSTATİSTİKLER (GÜVEN VERMEK İÇİN) -->
+    <div class="stats">
+        <div class="stat-item">
+            <h3>%100</h3>
+            <p>Yazılım Tabanlı Çözüm</p>
+        </div>
+        <div class="stat-item">
+            <h3>+50</h3>
+            <p>Optimize Edilmiş Cihaz</p>
+        </div>
+        <div class="stat-item">
+            <h3>7/24</h3>
+            <p>Sistem Desteği</p>
+        </div>
     </div>
 
-    <div class="footer">
-        © 2026 YayoTech
-    </div>
+    <!-- HİZMETLER -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <span>UZMANLIK ALANLARIMIZ</span>
+            <h2>Neler Yapıyoruz?</h2>
+        </div>
+
+        <div class="services-grid">
+            <!-- Hizmet 1 -->
+            <div class="card">
+                <i class="fa-brands fa-windows"></i>
+                <h3>Sistem Kurtarma & Kurulum</h3>
+                <p>Cihazınıza en uygun Windows sürümünün lisanslı kurulumu, sürücülerin (Driver) hatasız yapılandırılması ve 'Bloatware' temizliği.</p>
+                <div class="price">Başlangıç: 150₺</div>
+            </div>
+
+            <!-- Hizmet 2 (EN ÖNEMLİSİ) -->
+            <div class="card">
+                <i class="fa-solid fa-rocket"></i>
+                <h3>Gaming Boost Optimizasyonu</h3>
+                <p>Parça değiştirmeden FPS artışı. Regedit ayarları, arka plan servis optimizasyonu ve işlemci önceliklendirme ile oyunlarda akıcılık.</p>
+                <div class="price">Başlangıç: 100₺</div>
+            </div>
+
+            <!-- Hizmet 3 -->
+            <div class="card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Mobil Veri Yönetimi</h3>
+                <p>Telefonunuzda yer açın. Gereksiz dosyaların temizliği, bulut yedekleme entegrasyonu ve galeri düzenleme.</p>
+                <div class="price">Başlangıç: 75₺</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GÜVEN BÖLÜMÜ -->
+    <section class="trust-section">
+        <div class="trust-text">
+            <h2>Neden YayoTech?</h2>
+            <p>Biz, klasik "bilgisayarcı" mantığıyla çalışmıyoruz. Cihazınızın vidasını bile sökmeden, tamamen mühendislik düzeyinde yazılım çözümleri sunuyoruz.</p>
+            <div class="trust-features">
+                <ul>
+                    <li><i class="fa-solid fa-shield-halved"></i> <strong>Donanım Riski Yok:</strong> Cihazınızın içini açmıyoruz.</li>
+                    <li><i class="fa-solid fa-code"></i> <strong>Kod Tabanlı Çözüm:</strong> Bilinçsiz tamir değil, algoritmik hızlandırma.</li>
+                    <li><i class="fa-solid fa-clock"></i> <strong>Hızlı Teslimat:</strong> Aynı gün içinde uzaktan veya yerinde işlem.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="logo">Yayo<span>Tech</span></div>
+        <p style="margin-top: 10px; color: gray;">Konya'nın Yeni Nesil Teknoloji Çözüm Merkezi</p>
+        
+        <div class="socials">
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        
+        <p style="font-size: 0.8rem; color: #444;">© 2026 YayoTech Yazılım Hizmetleri. Tüm Hakları Saklıdır.</p>
+    </footer>
 
 </body>
 </html>
