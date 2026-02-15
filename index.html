@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayo42</title>
+    <title>Yayo42 | Dijital Portföy</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        /* --- GENEL AYARLAR --- */
+        /* --- GENEL AYARLAR (AYNI) --- */
         :root {
-            --primary: #3b82f6; /* Neon Mavi */
-            --secondary: #8b5cf6; /* Neon Mor */
-            --bg-color: #0f172a; /* Çok koyu lacivert */
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --bg-color: #0f172a;
             --text-color: #cbd5e1;
-            --card-bg: rgba(30, 41, 59, 0.7); /* Buzlu Cam */
+            --card-bg: rgba(30, 41, 59, 0.7);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,154 +25,94 @@
             overflow-x: hidden;
         }
 
-        /* --- ANİMASYONLAR --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Animasyon sınıfları */
-        .animate-1 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
-        .animate-2 { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
-        .animate-3 { animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0; }
-        .animate-4 { animation: fadeInUp 0.8s ease-out 0.6s forwards; opacity: 0; }
-
         /* --- YAPI --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            min-height: 100vh; /* Footer'ı alta itmek için */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- HEADER (LOGO BURADA) --- */
+        /* --- HEADER (AYNI) --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 40px 0;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
-        /* Logo ve İsim Kutusu */
-        .brand-container {
+        .brand-container { display: flex; align-items: center; gap: 15px; }
+        .profile-logo {
+            width: 50px; height: 50px; border-radius: 50%; object-fit: cover;
+            border: 2px solid var(--primary); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+        .logo-text {
+            font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 1px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* --- HERO (GİRİŞ - AYNI) --- */
+        .hero { text-align: center; padding: 40px 0; margin-bottom: 60px; }
+        h1 { font-size: 3.5rem; font-weight: 800; color: #fff; margin-bottom: 20px; line-height: 1.2; }
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary), #fff, var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #94a3b8; }
+
+        /* --- YENİ ARŞİV KARTI BÖLÜMÜ --- */
+        .archive-section { margin-bottom: 100px; }
+
+        /* O sarı kartın tasarımını buraya uyguladık */
+        .archive-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer; /* Tıklanabilir olduğunu gösterir */
+            text-decoration: none; /* Link alt çizgisini kaldırır */
+            display: block; /* Linkin kutu gibi davranmasını sağlar */
+        }
+
+        .archive-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary); /* Hover'da mor renk */
+            box-shadow: 0 15px 40px -10px rgba(139, 92, 246, 0.4);
+        }
+
+        .archive-card h3 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 15px; /* Logo ile yazı arasındaki boşluk */
+            justify-content: center;
+            gap: 15px;
         }
-
-        /* Yuvarlak Logo Ayarları */
-        .profile-logo {
-            width: 60px;  /* Logonun genişliği */
-            height: 60px; /* Logonun yüksekliği */
-            border-radius: 50%; /* Tam yuvarlak yapar */
-            object-fit: cover; /* Resmi sıkıştırmadan sığdırır */
-            border: 2px solid var(--primary); /* Çevresine ince neon mavi çizgi */
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); /* Hafif parlama efekti */
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 1px;
+        
+        /* Başlığın yanındaki ikon */
+        .archive-icon {
+            font-size: 2.5rem;
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- HERO (GİRİŞ) --- */
-        .hero {
-            text-align: center;
-            padding: 60px 0;
-            margin-bottom: 100px;
+        .archive-card p {
+            font-size: 1.1rem; color: #94a3b8; max-width: 80%; margin: 0 auto;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .gradient-text {
-            background: linear-gradient(to right, var(--primary), #fff, var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #94a3b8;
-        }
-
-        /* --- KARTLAR --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-bottom: 100px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
-            color: #fff;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .card h3::before {
-            content: '';
-            display: block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            margin-right: 10px;
-            box-shadow: 0 0 10px var(--primary);
-        }
-
-        /* --- PROJELER BÖLÜMÜ --- */
-        .projects { margin-bottom: 100px; }
-
-        .projects h2 {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 40px;
-            border-bottom: 2px solid rgba(255,255,255,0.05);
-            padding-bottom: 20px;
-        }
-
-        .project-item { margin-bottom: 30px; }
-        
-        .project-title { color: #fff; font-weight: 600; font-size: 1.2rem; }
-
-        /* --- FOOTER --- */
+        /* --- FOOTER (AYNI) --- */
         footer {
-            text-align: center;
-            padding: 50px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.9rem;
-            color: #64748b;
+            text-align: center; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem; color: #64748b; margin-top: auto;
         }
     </style>
 </head>
@@ -180,7 +120,7 @@
 
     <div class="container">
         
-        <header class="animate-1">
+        <header>
             <div class="brand-container">
                 <img src="logo.png" alt="Yayo42 Logo" class="profile-logo">
                 <div class="logo-text">Yayo42</div>
@@ -188,69 +128,31 @@
             <div style="font-size: 0.9rem; color: #64748b;">EST. 2026</div>
         </header>
 
-        <section class="hero animate-2">
+        <section class="hero">
             <h1>
                 Geleceği Tasarlayan<br>
                 <span class="gradient-text">Dijital Mimari</span>
             </h1>
             <p>
                 Teknoloji sadece kodlardan ibaret değildir; bir yaşam tarzıdır. 
-                Performans odaklı yazılımlar, optimize edilmiş donanımlar ve 
-                modern web çözümleri geliştiriyorum. Karmaşayı sadelikle çözüyoruz.
+                Karmaşayı sadelikle çözüyor, sistemlerin derinliklerine iniyoruz.
             </p>
         </section>
 
-        <section class="grid animate-3">
-            
-            <div class="card">
-                <h3>Yazılım Geliştirme</h3>
+        <section class="archive-section">
+            <a href="Samsung-PIT-Archive.html" class="archive-card">
+                <h3>
+                    <span class="archive-icon">📂</span> Samsung PIT Arşivi
+                </h3>
                 <p>
-                    Python tabanlı otomasyon sistemleri ve modern web mimarisi üzerine çalışıyorum. 
-                    Amacım sadece çalışan değil, aynı zamanda sistem kaynaklarını en verimli kullanan, 
-                    hızlı ve sürdürülebilir kodlar yazmak.
+                    Samsung cihazlar için kritik sistem kurtarma (Unbrick) dosyaları, 
+                    canlı cihaz bilgileri, Odin rehberleri ve güvenlik taramaları. 
+                    Hepsi tek bir merkezde.
                 </p>
-            </div>
-
-            <div class="card">
-                <h3>Donanım & Mühendislik</h3>
-                <p>
-                    Bir bilgisayarın gücü, parçalarının toplamından fazlasıdır. 
-                    Sistem toplama, bileşen uyumluluğu ve performans optimizasyonu konularında 
-                    derinlemesine analizler yapıyorum. Sınırları zorlamayı severim.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Yenilikçi Vizyon</h3>
-                <p>
-                    Her proje yeni bir öğrenme sürecidir. Sıradan çözümler yerine, 
-                    problemlere yaratıcı ve modern yaklaşımlar getirmeyi hedeflerim. 
-                    Dijital dünyada iz bırakacak işler peşindeyim.
-                </p>
-            </div>
-
+            </a>
         </section>
 
-        <section class="projects animate-4">
-            <h2>Teknik Yetkinlikler</h2>
-            
-            <div class="project-item">
-                <div class="project-title">Python & Backend</div>
-                <p>Veri işleme, otomasyon araçları ve performans algoritmaları.</p>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">Sistem Optimizasyonu</div>
-                <p>Windows ve Linux tabanlı sistemlerde maksimum verimlilik ayarları.</p>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">Web Teknolojileri</div>
-                <p>Modern arayüz tasarımları, HTML5/CSS3 ve kullanıcı deneyimi odaklı yapılar.</p>
-            </div>
-        </section>
-
-        <footer class="animate-4">
+        <footer>
             <p>&copy; 2026 Yayo42. Tüm Hakları Saklıdır.</p>
             <p style="margin-top: 10px; opacity: 0.5;">Designed for Performance</p>
         </footer>
