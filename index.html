@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="tr">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YayoTech | Teknoloji Dünyası</title>
+    <title>Yayo42 | Official</title>
     <style>
-        /* Modern Reset ve Temel Ayarlar */
+        /* SIFIRLAMA VE TEMEL AYARLAR */
         * {
             margin: 0;
             padding: 0;
@@ -13,147 +12,160 @@
         }
 
         body {
-            background-color: #0a0a0a; /* Göz yormayan çok koyu gri/siyah */
-            color: #e0e0e0; /* Tam beyaz değil, kırık beyaz (gözü almaz) */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            align-items: center;
+            background-color: #000000; /* Tam Siyah */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Sistem fontları (Hızlı ve Keskin) */
+            line-height: 1.5;
+            overflow-x: hidden; /* Yan kaydırmayı engelle */
         }
 
-        /* Ana Taşıyıcı (Her şeyi ortalar ve sınırlar) */
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin-top: 50px;
+        /* TİPOGRAFİ */
+        h1, h2, h3 {
+            font-weight: 500; /* Kalın değil, modern ince/orta */
+            letter-spacing: -0.03em; /* Harfleri hafif birbirine yaklaştırır (Apple/Google tarzı) */
         }
 
-        /* Header (Logo ve İsim) */
+        p {
+            color: #999999; /* Gri metin */
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        /* ANA YAPI */
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HEADER / NAVBAR */
         header {
-            text-align: center;
-            margin-bottom: 60px;
-            border-bottom: 1px solid #333; /* İnce bir çizgi */
-            padding-bottom: 20px;
+            padding: 40px 0;
+            margin-bottom: 100px;
+            border-bottom: 1px solid #1a1a1a; /* Çok silik çizgi */
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            background: -webkit-linear-gradient(#fff, #666); /* Yazıya metalik efekt */
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* HERO BÖLÜMÜ (Giriş) */
+        .hero {
+            margin-bottom: 150px;
+        }
+
+        .hero h1 {
+            font-size: 5rem; /* Devasa Başlık */
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, #666);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            font-size: 1.1rem;
-            color: #888;
-            margin-top: 10px;
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; } /* Mobilde küçült */
         }
 
-        /* İçerik Kartları */
-        .card {
-            background-color: #111; /* Arka plandan bir tık açık */
-            border: 1px solid #222;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            transition: transform 0.2s ease;
+        /* IZGARA DÜZENİ (Grid) */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* İki sütun */
+            gap: 60px;
+            margin-bottom: 150px;
         }
 
-        .card:hover {
-            transform: translateY(-5px); /* Üzerine gelince hafif yukarı kalkar */
-            border-color: #444;
+        @media (max-width: 768px) {
+            .grid-section { grid-template-columns: 1fr; } /* Mobilde tek sütun */
         }
 
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .column h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
             color: #fff;
-            border-left: 4px solid #007acc; /* Yazılımcı mavisi çizgi */
-            padding-left: 10px;
         }
 
-        p {
+        .column ul {
+            list-style: none;
+            border-top: 1px solid #333;
+        }
+
+        .column li {
+            padding: 15px 0;
+            border-bottom: 1px solid #1a1a1a;
             color: #bbb;
-            margin-bottom: 15px;
-        }
-
-        /* Etiketler (Tags) */
-        .tag-container {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 0.95rem;
         }
 
-        .tag {
-            background-color: #1a1a1a;
-            color: #888;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid #333;
+        .column li span {
+            color: #666;
         }
 
-        /* Footer */
+        /* FOOTER */
         footer {
-            margin-top: auto;
-            padding: 20px;
+            padding: 50px 0;
+            border-top: 1px solid #1a1a1a;
             color: #444;
-            font-size: 0.9rem;
-            text-align: center;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
         }
 
-        /* Linkler */
-        a {
-            color: #007acc;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="wrapper">
         
         <header>
-            <h1>YAYOTECH</h1>
-            <div class="subtitle">Hardware & Software Enthusiast</div>
+            <div class="brand">Yayo42</div>
         </header>
 
-        <div class="card">
-            <h2>Merhaba, Ben Yayo.</h2>
+        <section class="hero">
+            <h1>Hardware.<br>Software.<br>Performance.</h1>
             <p>
-                Teknoloji dünyasının derinliklerini keşfeden bir geliştirici ve donanım meraklısıyım. 
-                Basit bir fikrin çalışan bir sisteme dönüşmesini izlemek en büyük tutkum.
+                Gelişmiş sistem optimizasyonu ve yazılım mimarisi üzerine çalışmalar.
+                Minimalist çözümler, maksimum verimlilik.
             </p>
-            <p>
-                Burada öğrendiğim yeni teknolojileri, donanım incelemelerimi ve kodlama maceralarımı paylaşacağım.
-                Minimalizm ve performans odaklıyım.
-            </p>
-        </div>
+        </section>
 
-        <div class="card">
-            <h2>Nelerle İlgileniyorum?</h2>
-            <p>
-                Hem yazılımın mantığıyla hem de donanımın gücüyle uğraşmayı seviyorum.
-            </p>
-            <div class="tag-container">
-                <span class="tag">Python</span>
-                <span class="tag">Linux Sistemler</span>
-                <span class="tag">PC Toplama & Optimizasyon</span>
-                <span class="tag">Web Teknolojileri</span>
-                <span class="tag">Siber Güvenlik</span>
+        <section class="grid-section">
+            
+            <div class="column">
+                <h2>Software</h2>
+                <p style="margin-bottom: 30px;">
+                    Modern diller ve algoritmalar ile sistem kaynaklarını en verimli şekilde kullanan yapılar.
+                </p>
+                <ul>
+                    <li>Python Development <span>Backend / Automation</span></li>
+                    <li>Web Technologies <span>HTML / CSS</span></li>
+                    <li>System Optimization <span>Windows / Linux</span></li>
+                </ul>
             </div>
-        </div>
+
+            <div class="column">
+                <h2>Hardware</h2>
+                <p style="margin-bottom: 30px;">
+                    Donanım bileşenlerinin sınırlarını zorlayan konfigürasyonlar ve entegrasyonlar.
+                </p>
+                <ul>
+                    <li>PC Building <span>Custom Configs</span></li>
+                    <li>Component Analysis <span>GPU / CPU / RAM</span></li>
+                    <li>Mobile Architecture <span>System Logic</span></li>
+                </ul>
+            </div>
+
+        </section>
 
         <footer>
-            <p>&copy; 2026 YayoTech. Konya'dan kodlandı.</p>
+            <div>&copy; 2026 Yayo42. All Rights Reserved.</div>
+            <div>Designed for performance.</div>
         </footer>
 
     </div>
