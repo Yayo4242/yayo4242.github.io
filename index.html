@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayo42</title>
+    <title>Yayo42 | Dijital Portföy</title>
     <style>
         /* --- GENEL AYARLAR --- */
         :root {
             --primary: #3b82f6; /* Neon Mavi */
             --secondary: #8b5cf6; /* Neon Mor */
-            --bg-color: #0f172a; /* Çok koyu lacivert (Siyah değil) */
+            --bg-color: #0f172a; /* Çok koyu lacivert */
             --text-color: #cbd5e1;
             --card-bg: rgba(30, 41, 59, 0.7); /* Buzlu Cam */
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-color);
@@ -30,20 +26,8 @@
 
         /* --- ANİMASYONLAR --- */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
-            100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Animasyon sınıfları */
@@ -59,7 +43,7 @@
             padding: 20px;
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER (LOGO BURADA) --- */
         header {
             display: flex;
             justify-content: space-between;
@@ -68,7 +52,24 @@
             margin-bottom: 80px;
         }
 
-        .logo {
+        /* Logo ve İsim Kutusu */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Logo ile yazı arasındaki boşluk */
+        }
+
+        /* Yuvarlak Logo Ayarları */
+        .profile-logo {
+            width: 60px;  /* Logonun genişliği */
+            height: 60px; /* Logonun yüksekliği */
+            border-radius: 50%; /* Tam yuvarlak yapar */
+            object-fit: cover; /* Resmi sıkıştırmadan sığdırır */
+            border: 2px solid var(--primary); /* Çevresine ince neon mavi çizgi */
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); /* Hafif parlama efekti */
+        }
+
+        .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
             color: #fff;
@@ -98,7 +99,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 200% auto;
-            animation: glow 3s infinite alternate;
         }
 
         .hero p {
@@ -121,12 +121,12 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 40px;
             border-radius: 16px;
-            backdrop-filter: blur(10px); /* Arka planı bulanıklaştırır */
+            backdrop-filter: blur(10px);
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px); /* Hoverda yukarı kalkar */
+            transform: translateY(-10px);
             border-color: var(--primary);
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
         }
@@ -151,9 +151,7 @@
         }
 
         /* --- PROJELER BÖLÜMÜ --- */
-        .projects {
-            margin-bottom: 100px;
-        }
+        .projects { margin-bottom: 100px; }
 
         .projects h2 {
             font-size: 2.5rem;
@@ -163,15 +161,9 @@
             padding-bottom: 20px;
         }
 
-        .project-item {
-            margin-bottom: 30px;
-        }
+        .project-item { margin-bottom: 30px; }
         
-        .project-title {
-            color: #fff;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
+        .project-title { color: #fff; font-weight: 600; font-size: 1.2rem; }
 
         /* --- FOOTER --- */
         footer {
@@ -181,7 +173,6 @@
             font-size: 0.9rem;
             color: #64748b;
         }
-
     </style>
 </head>
 <body>
@@ -189,7 +180,10 @@
     <div class="container">
         
         <header class="animate-1">
-            <div class="logo">Yayo42</div>
+            <div class="brand-container">
+                <img src="logo.png" alt="Yayo42 Logo" class="profile-logo">
+                <div class="logo-text">Yayo42</div>
+            </div>
             <div style="font-size: 0.9rem; color: #64748b;">EST. 2026</div>
         </header>
 
