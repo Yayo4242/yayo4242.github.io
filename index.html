@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="tr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yayo42 | Official</title>
+    <title>Yayo42 | Dijital Portföy</title>
     <style>
-        /* SIFIRLAMA VE TEMEL AYARLAR */
+        /* --- GENEL AYARLAR --- */
+        :root {
+            --primary: #3b82f6; /* Neon Mavi */
+            --secondary: #8b5cf6; /* Neon Mor */
+            --bg-color: #0f172a; /* Çok koyu lacivert (Siyah değil) */
+            --text-color: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.7); /* Buzlu Cam */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,163 +21,140 @@
         }
 
         body {
-            background-color: #000000; /* Tam Siyah */
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Sistem fontları (Hızlı ve Keskin) */
-            line-height: 1.5;
-            overflow-x: hidden; /* Yan kaydırmayı engelle */
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        /* TİPOGRAFİ */
-        h1, h2, h3 {
-            font-weight: 500; /* Kalın değil, modern ince/orta */
-            letter-spacing: -0.03em; /* Harfleri hafif birbirine yaklaştırır (Apple/Google tarzı) */
+        /* --- ANİMASYONLAR --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        p {
-            color: #999999; /* Gri metin */
-            font-size: 1rem;
-            max-width: 600px;
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(139, 92, 246, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
         }
 
-        /* ANA YAPI */
-        .wrapper {
-            max-width: 1200px;
+        /* Animasyon sınıfları */
+        .animate-1 { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .animate-2 { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+        .animate-3 { animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0; }
+        .animate-4 { animation: fadeInUp 0.8s ease-out 0.6s forwards; opacity: 0; }
+
+        /* --- YAPI --- */
+        .container {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
         }
 
-        /* HEADER / NAVBAR */
+        /* --- HEADER --- */
         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 40px 0;
-            margin-bottom: 100px;
-            border-bottom: 1px solid #1a1a1a; /* Çok silik çizgi */
+            margin-bottom: 80px;
         }
 
-        .brand {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* HERO BÖLÜMÜ (Giriş) */
-        .hero {
-            margin-bottom: 150px;
-        }
-
-        .hero h1 {
-            font-size: 5rem; /* Devasa Başlık */
-            line-height: 1.1;
-            margin-bottom: 30px;
-            background: linear-gradient(to right, #fff, #666);
+            letter-spacing: 1px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; } /* Mobilde küçült */
+        /* --- HERO (GİRİŞ) --- */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 100px;
         }
 
-        /* IZGARA DÜZENİ (Grid) */
-        .grid-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* İki sütun */
-            gap: 60px;
-            margin-bottom: 150px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-section { grid-template-columns: 1fr; } /* Mobilde tek sütun */
-        }
-
-        .column h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
             color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .column ul {
-            list-style: none;
-            border-top: 1px solid #333;
+        .gradient-text {
+            background: linear-gradient(to right, var(--primary), #fff, var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: glow 3s infinite alternate;
         }
 
-        .column li {
-            padding: 15px 0;
-            border-bottom: 1px solid #1a1a1a;
-            color: #bbb;
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #94a3b8;
+        }
+
+        /* --- KARTLAR --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px); /* Arka planı bulanıklaştırır */
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Hoverda yukarı kalkar */
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
-            font-size: 0.95rem;
+            align-items: center;
         }
 
-        .column li span {
-            color: #666;
+        .card h3::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--primary);
         }
 
-        /* FOOTER */
-        footer {
-            padding: 50px 0;
-            border-top: 1px solid #1a1a1a;
-            color: #444;
-            font-size: 0.8rem;
-            display: flex;
-            justify-content: space-between;
+        /* --- PROJELER BÖLÜMÜ --- */
+        .projects {
+            margin-bottom: 100px;
         }
 
-    </style>
-</head>
-<body>
-
-    <div class="wrapper">
-        
-        <header>
-            <div class="brand">Yayo42</div>
-        </header>
-
-        <section class="hero">
-            <h1>Hardware.<br>Software.<br>Performance.</h1>
-            <p>
-                Gelişmiş sistem optimizasyonu ve yazılım mimarisi üzerine çalışmalar.
-                Minimalist çözümler, maksimum verimlilik.
-            </p>
-        </section>
-
-        <section class="grid-section">
-            
-            <div class="column">
-                <h2>Software</h2>
-                <p style="margin-bottom: 30px;">
-                    Modern diller ve algoritmalar ile sistem kaynaklarını en verimli şekilde kullanan yapılar.
-                </p>
-                <ul>
-                    <li>Python Development <span>Backend / Automation</span></li>
-                    <li>Web Technologies <span>HTML / CSS</span></li>
-                    <li>System Optimization <span>Windows / Linux</span></li>
-                </ul>
-            </div>
-
-            <div class="column">
-                <h2>Hardware</h2>
-                <p style="margin-bottom: 30px;">
-                    Donanım bileşenlerinin sınırlarını zorlayan konfigürasyonlar ve entegrasyonlar.
-                </p>
-                <ul>
-                    <li>PC Building <span>Custom Configs</span></li>
-                    <li>Component Analysis <span>GPU / CPU / RAM</span></li>
-                    <li>Mobile Architecture <span>System Logic</span></li>
-                </ul>
-            </div>
-
-        </section>
-
-        <footer>
-            <div>&copy; 2026 Yayo42. All Rights Reserved.</div>
-            <div>Designed for performance.</div>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+        .projects h2 {
+            font-size: 2.5rem;
+            color: #fff;
